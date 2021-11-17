@@ -27,19 +27,21 @@ function saveLocalStorage() {
         e.preventDefault();
         const key = document.getElementById("textKey").value;
         const value = document.getElementById("textMemo").value; 
-
         //値の入力チェック
         if (key=="" || value== "") {
             window.alert("Key,Memoはいずれも必須です。");
             return;
         }else{
-            localStorage.setItem(key,value);
-            viewStorage() ;     //localStorageからのデータ取得とテーブル表示
-            let w_msg = "LocalStorageに" + key + " " + value + "を保存しました。";
-            window.alert(w_msg);
-            document.getElementById("textKey").value = "";
-            document.getElementById("textMemo").value = "";
-        }
+        let w_confirm =confirm( "LocalStorage" + key + " " + value + "に保存しますか。.\nよろしいでしょうか");
+        if(w_confirm ===true){
+               localStorage.setItem(key,value);
+               viewStorage() ;     //localStorageからのデータ取得とテーブル表示
+               let w_msg = "LocalStorageに" + key + " " + value + "を保存しました。";
+               window.alert(w_msg);
+               document.getElementById("textKey").value = "";
+               document.getElementById("textMemo").value = "";
+           };
+         };
      },false
    );
 }
@@ -57,12 +59,17 @@ function  delLocalStorage() {
      if(w_sel === "1"){
       const key = document.getElementById("textKey").value;
       const value = document.getElementById("textMemo").value; 
-      localStorage.removeItem(key);
-      viewStorage(); //LocalStorageからのデータのしゅとくとテーブルへ表示
-      let w_msg = "LocalStorageから" + key + " " + value + "を削除しました。";
-      window.alert(w_msg);
-      document.getElementById("textKey").value = "";
-      document.getElementById("textMemo").value = "";
+      let w_confirm =confirm( "LocalStorageから" + key + " " + value + "削除します。.\nよろしいでしょうか");
+      if(w_confirm ===true){
+
+        localStorage.removeItem(key);
+        viewStorage(); //LocalStorageからのデータのしゅとくとテーブルへ表示
+        let w_msg = "LocalStorageから" + key + " " + value + "を削除しました。";
+        window.alert(w_msg);
+        document.getElementById("textKey").value = "";
+        document.getElementById("textMemo").value = "";
+      };
+      
       }
     },false
    );
@@ -136,4 +143,9 @@ window.alert("1つ選択してください")
     td2.innerHTML = w_key;
     td3.innerHTML = localStorage.getItem(w_key);
   }
+  //sorter
+  $("#table1").tablesorter({
+      sortList:[[1,0]]
+  });
+  $("#table1").trigger("update");
 };
