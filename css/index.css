@@ -87,7 +87,10 @@ h2{
     background-color:rgba(245, 245, 245, 0.6);
     box-shadow:0 0 0.5em rgb(73, 72, 72);
         /* https://developer.mozilla.org/ja/docs/Web/CSS/box-shadow */
-}
+        /* position:relative; fukada-del*/
+        /* flex: auto; fukada-del*/
+
+    }
 main > p {
     font: 1.2em bold;
 }
@@ -111,37 +114,29 @@ a:hover{
 /*****************************/
 /* container  item           */
 /*****************************/
-.container01-01 , .container01-02, .container01-03 , .container01-04 {
+.container01-01 {
     display: flex;
-        /*https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Flexible_Box_Layout*/
     flex-wrap:wrap;
-        /*https://developer.mozilla.org/ja/docs/Web/CSS/flex-wrap*/
     justify-content: space-evenly;
-        /*https://developer.mozilla.org/ja/docs/Web/CSS/justify-content*/
     font-size: 0.7em;
 }
-
 .item01{
     position: relative;
     width: 6em;
     height: 9em;
-    margin: 0;
+    margin: 220;
     line-height: 1em;
     overflow: hidden;
-}
-
-.item02{
-    position: relative;
-    width: 6em;
-    height: 12em;
-    margin: 0;
-    line-height: 1em;
-    overflow: hidden;
+    /* display: flex; fukada-del
+    flex-direction: row; fukada-del*/
+    
 }
 
 .item01 img, .item02 img{
     width: 6em;
     height: auto;
+   
+
 }
 
 .item01 .img_omikuji2{
